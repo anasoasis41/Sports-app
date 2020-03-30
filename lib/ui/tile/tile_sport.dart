@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sportsapp/models/sport.dart';
 
@@ -18,8 +19,9 @@ class TileSport extends StatelessWidget {
             style: TextStyle(
               fontSize: 25,
               fontStyle: FontStyle.italic),),
-          Image.network(
-          sport.thumb,
+          CachedNetworkImage(
+          placeholder: (context, url) => CircularProgressIndicator(),
+          imageUrl: sport.thumb,
           width: MediaQuery.of(context).size.width / 2,
           ),
         ],
