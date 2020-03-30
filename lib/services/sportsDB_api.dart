@@ -1,4 +1,5 @@
 import 'package:http/http.dart' as http;
+import 'package:sportsapp/models/league.dart';
 import 'dart:convert' show json;
 
 import 'package:sportsapp/models/sport.dart';
@@ -23,5 +24,10 @@ class SportsDBApi {
   Future<List<Sport>> fetchSports() async {
     final List<dynamic> list = await request(_allSports(), "sports");
     return list.map((json) => Sport.fromJson(json)).toList();
+  }
+
+  Future<List<League>> fetchLeagues(String name) async {
+    final List<dynamic> list = await request(_allLeague(name), "countrys");
+    return list.map((json) => League.fromJson(json)).toList();
   }
 }

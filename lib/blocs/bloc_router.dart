@@ -15,5 +15,5 @@ class BlocRouter {
       BlocProvider<BlocSport>(bloc: BlocSport(), child: HomeScreen());
 
   BlocProvider sport(Sport sport) =>
-      BlocProvider<BlocLeague>(bloc: BlocLeague(), child: SportScreen(sport));
+      BlocProvider<BlocLeague>(bloc: BlocLeague(sport.name), child: SportScreen(sport));
 }
