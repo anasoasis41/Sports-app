@@ -1,6 +1,8 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert' show json;
 
+import 'package:sportsapp/models/sport.dart';
+
 class SportsDBApi {
 
   final _baseUrl = "https://thesportsdb.p.rapidapi.com/1/";
@@ -17,10 +19,8 @@ class SportsDBApi {
     return body[key];
   }
 
-  fetchSports() async {
+  Future<List<Sport>> fetchSports() async {
     final List<dynamic> list = await request(_allSports(), "sports");
-    list.forEach((l) {
-      print("Nouvel élément: $l");
-    });
+    return list.map((json) => Sport.fromJson(json)).toList();
   }
 }

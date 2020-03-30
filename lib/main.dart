@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sportsapp/blocs/bloc_provider.dart';
+import 'package:sportsapp/blocs/bloc_sport.dart';
 import 'package:sportsapp/ui/home_screen.dart';
 
 void main() => runApp(MyApp());
@@ -13,7 +15,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: HomeScreen(),
+      home: BlocProvider<BlocSport>(
+        bloc: BlocSport(),
+        child: HomeScreen(),
+      ),
     );
   }
 }
