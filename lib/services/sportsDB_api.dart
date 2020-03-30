@@ -7,6 +7,7 @@ class SportsDBApi {
 
   final _baseUrl = "https://thesportsdb.p.rapidapi.com/1/";
   String _allSports() => _baseUrl + "all_sports.php";
+  String _allLeague(String name) => _baseUrl + "search_all_leagues.php?s=" + name;
 
   Map<String, String> get headers => {
     "x-rapidapi-host": "thesportsdb.p.rapidapi.com",
