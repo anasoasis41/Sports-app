@@ -4,6 +4,7 @@ import 'package:sportsapp/blocs/bloc_league.dart';
 import 'package:sportsapp/blocs/bloc_provider.dart';
 import 'package:sportsapp/models/league.dart';
 import 'package:sportsapp/models/sport.dart';
+import 'package:sportsapp/ui/lists/list_league.dart';
 import 'package:sportsapp/ui/widgets/my_app_bar.dart';
 import 'package:sportsapp/ui/widgets/no_data.dart';
 
@@ -29,7 +30,7 @@ class SportScreen extends StatelessWidget {
                 } else if (!snap.hasData) {
                   return NoData("N'a pas de données");
                 } else {
-                  return NoData(snap.data.length.toString());
+                  return ListLeague(snap.data);
                 }
               },
             ),
