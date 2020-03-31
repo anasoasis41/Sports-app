@@ -15,6 +15,7 @@ class IconWidget extends StatelessWidget {
       imageUrl: url,
       height: size,
       width: size,
+      errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }
 }

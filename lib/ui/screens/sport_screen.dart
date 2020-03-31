@@ -31,29 +31,4 @@ class SportScreen extends StatelessWidget {
       ),
     );
   }
-
-
-  Container detail(BuildContext context) {
-    final midHeight = MediaQuery.of(context).size.height / 2.5;
-    return Container(
-      height: midHeight,
-      child: Card(
-        elevation: 7.5,
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              CachedNetworkImage(
-                placeholder: (context, url) => CircularProgressIndicator(),
-                imageUrl: sport.thumb,
-              ),
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: Text(sport.desc),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }

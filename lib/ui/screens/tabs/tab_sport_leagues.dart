@@ -18,7 +18,7 @@ class TabSportLeagues extends StatelessWidget {
               if (snap == null) {
                 return NoData("Aucune données");
               } else if (!snap.hasData) {
-                return NoData("N'a pas de données");
+                return Center(child: CircularProgressIndicator());
               } else {
                 return ListLeague(snap.data);
               }
