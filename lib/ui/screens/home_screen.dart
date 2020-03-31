@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:sportsapp/blocs/bloc_provider.dart';
 import 'package:sportsapp/blocs/bloc_sport.dart';
 import 'package:sportsapp/models/sport.dart';
-import 'package:sportsapp/services/sportsDB_api.dart';
 import 'package:sportsapp/ui/lists/list_sport.dart';
 import 'package:sportsapp/ui/widgets/my_app_bar.dart';
 import 'package:sportsapp/ui/widgets/no_data.dart';
