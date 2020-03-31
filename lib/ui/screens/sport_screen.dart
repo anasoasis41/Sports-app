@@ -1,12 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:sportsapp/blocs/bloc_league.dart';
-import 'package:sportsapp/blocs/bloc_provider.dart';
-import 'package:sportsapp/models/league.dart';
 import 'package:sportsapp/models/sport.dart';
-import 'package:sportsapp/ui/lists/list_league.dart';
-import 'package:sportsapp/ui/widgets/my_app_bar.dart';
-import 'package:sportsapp/ui/widgets/no_data.dart';
+import 'package:sportsapp/ui/screens/tabs/tab_sport_description.dart';
+import 'package:sportsapp/ui/screens/tabs/tab_sport_leagues.dart';
 
 class SportScreen extends StatelessWidget {
   final Sport sport;
@@ -14,35 +10,33 @@ class SportScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<BlocLeague>(context);
-    final midHeight = MediaQuery.of(context).size.height / 2.5;
-    return Scaffold(
-      appBar: MyAppBar(titleString: sport.name),
-      body: Column(
-        children: <Widget>[
-          detail(midHeight),
-          Expanded(
-            child: StreamBuilder<List<League>>(
-              stream: bloc.stream,
-              builder: (ctx, snap) {
-                if (snap == null) {
-                  return NoData("Aucune données");
-                } else if (!snap.hasData) {
-                  return NoData("N'a pas de données");
-                } else {
-                  return ListLeague(snap.data);
-                }
-              },
-            ),
-          )
-        ],
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(sport.name),
+          bottom: TabBar(
+            tabs: <Widget>[
+              Tab(icon: Icon(Icons.info), text: "Desription",),
+              Tab(icon: Icon(Icons.list), text: "Leagues",)
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            TabSportDescription(sport),
+            TabSportLeagues()
+          ],
+        )
       ),
     );
   }
 
-  Container detail(double height) {
+
+  Container detail(BuildContext context) {
+    final midHeight = MediaQuery.of(context).size.height / 2.5;
     return Container(
-      height: height,
+      height: midHeight,
       child: Card(
         elevation: 7.5,
         child: SingleChildScrollView(

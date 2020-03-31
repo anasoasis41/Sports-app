@@ -9,11 +9,9 @@ class TileLeague extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      child: ListTile(
-        title: Text(league.name),
-        leading: IconWidget(url: league.images.badge, size: 40),
-      ),
+    return ListTile(
+      title: Text(league.name),
+      leading: IconWidget(url: league.images.badge, size: 40),
       onTap: () => Navigator.of(context).push(BlocRouter().leagueDetail(league)),
     );
   }

@@ -1,11 +1,12 @@
 import 'dart:async';
+import 'package:rxdart/subjects.dart';
 import 'package:sportsapp/models/league.dart';
 import 'package:sportsapp/services/sportsDB_api.dart';
 import 'bloc.dart';
 
 
 class BlocLeague extends Bloc {
-  final _streamController = StreamController<List<League>>();
+  StreamController<List<League>> _streamController = new BehaviorSubject();
   Stream<List<League>> get stream => _streamController.stream;
   Sink<List<League>> get sink => _streamController.sink;
 
